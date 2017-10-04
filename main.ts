@@ -1,4 +1,6 @@
 import {Observable} from "rxjs/Observable";
+//import * as $ from 'jquery';
+
 
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/defer';
@@ -7,8 +9,13 @@ import 'rxjs/add/operator/mergeMap';
 
 //import {Observable} from "rxjs/Observable";
 
-let output = document.getElementById("output");
-let button = document.getElementById("button");
+//let output = document.getElementById("output");
+//let button = document.getElementById("button");
+//let output: JQuery = $("#output");
+
+//let output: JQuery = $("output").get(0);
+let output: any = $("#output");
+let button: any = $("#button");
 
 let click = Observable.fromEvent(button, "click");
 
@@ -55,7 +62,9 @@ function renderMovies(movies) {
     movies.forEach(m => {
         let div = document.createElement("div");
         div.innerText = m.title;
-        output.appendChild(div);
+        //output.appendChild(div); //original
+        output.append(div);
+
     });
 }
 
@@ -67,3 +76,6 @@ click.flatMap(e => loadWithFetch("movies.json"))
         e => console.log(`error: ${e}`),
         () => console.log("complete")
     );
+function newFunction() {
+    $;
+}
